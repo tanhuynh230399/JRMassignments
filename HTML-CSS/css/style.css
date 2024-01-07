@@ -85,6 +85,7 @@ body {
   font-size: 18px;
 }
 
+
 .quote {
   display:flex;
   text-align: left;
@@ -142,4 +143,143 @@ body {
   box-shadow: 0px 2px 5px rgba(250, 220, 217, 1);
   
   border: 1px solid #F79489;
+}
+
+@media screen and (max-width:600px) {
+  .navbar-header {
+    position: relative;
+  }
+  .navbar {
+    display: flex;
+    padding: 2px;
+    position: absolute;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+  }
+  .Logo{
+    position: absolute;
+    height: 3px;
+    width: 12px;
+    top: 50%; 
+    left: 5%; 
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+  
+  }
+  
+  .menus{
+    position: absolute;
+    height: 50px;
+    width: 200px;
+    top: 50%;
+    left: 50%;
+    justify-content: space-evenly;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+  }
+  .navbar ul li {
+    padding: 0 2px;
+    width: -20px;
+  }
+  .navbar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 10px;
+  }
+
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    top: 3%;
+    left: 33%;
+    right: 33%;
+    position: absolute;
+  }
+  .header-block{
+    text-align: center;
+  }
+  .header-block h1{
+    height: 30px;
+    width: 300px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 8px;
+  }
+  .header-block p {
+    height: 30px;
+    width: 300px;
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    font-size: 4px;
+  }
+
+  .quote {
+    display:flex;
+    text-align: left;
+    padding-top: 0px;
+  }
+  .quote h1{
+    margin-left:16px;
+    height: 40px;
+    width: 130px;
+    text-decoration: none;
+    color: #564E4E;
+    line-height: 72px;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .cards {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    padding-top: 0px;
+  }
+  .card {
+    background: #fff;
+    padding: 2px;
+    width: 20%;
+    border-radius: 2px;
+    text-align:left;
+  }
+  .card h3 {
+    margin-bottom: 3px;
+    color: #564E4E;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .card p {
+    font-size: 0.9em;
+    color: #564E4E;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .card a {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 3px;
+    color: #F79489;
+    display: inline-block;
+    margin-top: 3px;
+  }
+  
+  .card:hover{
+  
+    box-shadow: 0px 2px 5px rgba(250, 220, 217, 1);
+    
+    border: 1px solid #F79489;
+  }
+
 }
