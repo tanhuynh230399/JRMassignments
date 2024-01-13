@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         "results": [
             {
-              "gender": "female",
+              "gender": "Female",
               "name": {
                 "title": "Miss",
                 "first": "Nurdan",
@@ -73,18 +73,33 @@ document.addEventListener('DOMContentLoaded', function() {
     function createUserProfile(user) {
       const userProfile = document.querySelector('#userProfile');
       userProfile.innerHTML = `
-        <img src="${user.picture.large}" alt="User Profile Picture" class="profile-picture">
+        <img src="${user.picture.large}" style= "justify-content: center; align-items: center; display: flex" alt="User Profile Picture" class="profile-picture">
         <h1>${user.name.title} ${user.name.first} ${user.name.last}</h1>
       `;
+    }
+    function createDisplayBox()
+    {
+        const body = document.querySelector('#userProfile');
+        const box = document.createElement('div');
+        box.id = "displayBox";
+        box.style.justifyContent = "center"
+        const box_content = document.createElement('p');
+        box_content.textContent = '';
+        
+        box.appendChild(box_content);
+        body.appendChild(box);
     }
 
     function createIconBoxes() {
         const body = document.querySelector('#userProfile');
-        const frag_list_of_info = document.createDocumentFragment();
+        const div_list_of_info = document.createElement('div');
+        div_list_of_info.id = "listOfInfo";
+        
         for(let i = 0; i<4; i++)
         {
-            const temp_icon_list_item = document.createElement('li');
+            const temp_icon_list_item = document.createElement('p');
             temp_icon_list_item.id = 'section' + i;
+            temp_icon_list_item.style.padding = "15px";
             if (i == 0)
             {
                 temp_icon_list_item.textContent = 'Gender';
@@ -99,12 +114,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             else if (i == 3)
             {
-                temp_icon_list_item.textContent = 'Phone' + i;
+                temp_icon_list_item.textContent = 'Phone';
             }
             temp_icon_list_item.style.color = 'black';
-            frag_list_of_info.appendChild(temp_icon_list_item);
+            div_list_of_info.appendChild(temp_icon_list_item);
         }
-        body.appendChild(frag_list_of_info)
+
+        div_list_of_info.style.display = 'flex';
+        div_list_of_info.style.justifyContent = 'space-between';
+        div_list_of_info.style.flexDirection = 'row';
+        body.appendChild(div_list_of_info);
+
     }
 
 
@@ -112,45 +132,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call the function with the first user from the JSON data
     createUserProfile(jsonData.results[0]);
     createIconBoxes();
+    createDisplayBox();
+
+    const display_box_text = document.querySelector('#displayBox');
+    const original_text = display_box_text.textContent;
 
     const gender_ = document.querySelector('#section0');
-    const gender_originalText = gender_.textContent;
     const gender_updatedtext = jsonData.results[0].gender;
     gender_.addEventListener("mouseover", function(){
-        gender_.textContent = gender_updatedtext;
+        display_box_text.textContent = gender_updatedtext;
     });
     gender_.addEventListener("mouseout", function(){
-        gender_.textContent = gender_originalText;
+        display_box_text.textContent = original_text;
     });
 
     const email_ = document.querySelector('#section1');
-    const email_originalText = email_.textContent;
     const email_updatedtext = jsonData.results[0].email;
     email_.addEventListener("mouseover", function(){
-        email_.textContent = email_updatedtext;
+        display_box_text.textContent = email_updatedtext;
     });
     email_.addEventListener("mouseout", function(){
-        email_.textContent = email_originalText;
+        display_box_text.textContent = original_text;
     });
 
     const location_ = document.querySelector('#section2');
-    const location_originalText = location_.textContent;
     const location_updatedtext = jsonData.results[0].location.city + ", " + jsonData.results[0].location.state + ", "+ jsonData.results[0].location.country;
     location_.addEventListener("mouseover", function(){
-        location_.textContent = location_updatedtext;
+        display_box_text.textContent = location_updatedtext;
     });
     location_.addEventListener("mouseout", function(){
-        location_.textContent = location_originalText;
+        display_box_text.textContent = original_text;
     });
 
     const phone_ = document.querySelector('#section3');
-    const phone_originalText = phone_.textContent;
     const phone_updatedtext = jsonData.results[0].phone;
     phone_.addEventListener("mouseover", function(){
-        phone_.textContent = phone_updatedtext;
+        display_box_text.textContent = phone_updatedtext;
     });
     phone_.addEventListener("mouseout", function(){
-        phone_.textContent = phone_originalText;
+        display_box_text.textContent = original_text;
     });
 
 
