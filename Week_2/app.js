@@ -83,8 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const box = document.createElement('div');
         box.id = "displayBox";
         box.style.justifyContent = "center"
+        box.style.height = '20px';
+        box.style.paddingTop = '15px';
+        box.style.paddingBottom = '10px';
+        box.style.borderRadius = '8px';
         const box_content = document.createElement('p');
         box_content.textContent = '';
+        
         
         box.appendChild(box_content);
         body.appendChild(box);
@@ -100,6 +105,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const temp_icon_list_item = document.createElement('p');
             temp_icon_list_item.id = 'section' + i;
             temp_icon_list_item.style.padding = "15px";
+            temp_icon_list_item.style.width = '70px';
+            temp_icon_list_item.style.margin = '5px';
+            temp_icon_list_item.style.backgroundColor = '#f8f0e3';
+            temp_icon_list_item.style.borderRadius = '12px';
+            temp_icon_list_item.style.textAlign = 'center';
+            
             if (i == 0)
             {
                 temp_icon_list_item.textContent = 'Gender';
@@ -121,8 +132,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         div_list_of_info.style.display = 'flex';
-        div_list_of_info.style.justifyContent = 'space-between';
+        div_list_of_info.style.justifyContent = 'space-evenly';
         div_list_of_info.style.flexDirection = 'row';
+        div_list_of_info.style.margin = '15px';
+        
         body.appendChild(div_list_of_info);
 
     }
@@ -136,41 +149,58 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const display_box_text = document.querySelector('#displayBox');
     const original_text = display_box_text.textContent;
-
+    const icon_box_list = document.querySelectorAll('#listOfInfo p');
+    console.log(icon_box_list);
     const gender_ = document.querySelector('#section0');
     const gender_updatedtext = jsonData.results[0].gender;
     gender_.addEventListener("mouseover", function(){
         display_box_text.textContent = gender_updatedtext;
+        display_box_text.classList.add('smooth-transition');
+        icon_box_list[0].style.backgroundColor = '#e8e0d3';
     });
     gender_.addEventListener("mouseout", function(){
         display_box_text.textContent = original_text;
+        display_box_text.classList.remove('smooth-transition');
+        icon_box_list[0].style.backgroundColor = '#f8f0e3';
     });
 
     const email_ = document.querySelector('#section1');
     const email_updatedtext = jsonData.results[0].email;
     email_.addEventListener("mouseover", function(){
         display_box_text.textContent = email_updatedtext;
+        display_box_text.classList.add('smooth-transition');
+        icon_box_list[1].style.backgroundColor = '#e8e0d3';
     });
     email_.addEventListener("mouseout", function(){
         display_box_text.textContent = original_text;
+        display_box_text.classList.remove('smooth-transition');
+        icon_box_list[1].style.backgroundColor = '#f8f0e3';
     });
 
     const location_ = document.querySelector('#section2');
     const location_updatedtext = jsonData.results[0].location.city + ", " + jsonData.results[0].location.state + ", "+ jsonData.results[0].location.country;
     location_.addEventListener("mouseover", function(){
         display_box_text.textContent = location_updatedtext;
+        display_box_text.classList.add('smooth-transition');
+        icon_box_list[2].style.backgroundColor = '#e8e0d3';
     });
     location_.addEventListener("mouseout", function(){
         display_box_text.textContent = original_text;
+        display_box_text.classList.remove('smooth-transition');
+        icon_box_list[2].style.backgroundColor = '#f8f0e3';
     });
 
     const phone_ = document.querySelector('#section3');
     const phone_updatedtext = jsonData.results[0].phone;
     phone_.addEventListener("mouseover", function(){
         display_box_text.textContent = phone_updatedtext;
+        display_box_text.classList.add('smooth-transition');
+        icon_box_list[3].style.backgroundColor = '#e8e0d3';
     });
     phone_.addEventListener("mouseout", function(){
         display_box_text.textContent = original_text;
+        display_box_text.classList.remove('smooth-transition');
+        icon_box_list[3].style.backgroundColor = '#f8f0e3';
     });
 
 
